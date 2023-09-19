@@ -16,12 +16,21 @@ describe.only("Create responses", () => {
   })
   it("should have correct data", () => {
     const responses = createResponses({ count: 10, faker: fakerMock})
-    const firstResponse = Array.from(responses).map((k,v) => v)
+    const firstResponse = Array.from(responses.values())[0]
     expect(firstResponse.answer).toBe("answer")
     expect(firstResponse.score).toBe(3)
     expect(firstResponse.category).toBe("one")
   })
   it("should add to existing list", () => {
+    const firstProduct = {
+      id: "response-initial",
+      questionId: "1",
+      answer: "answer",
+      score: 3,
+      category: "Initial",
+    }
+    const products = createResponses({ count: 10, faker: fakerMock})
+    products.set(`response-${products.size}`, firstProduct)
     expect(firstProduct.answer).toBe("answer")
     expect(firstProduct.category).toBe("Initial")
     expect(firstProduct.id).toBe("response-initial")

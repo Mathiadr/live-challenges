@@ -36,9 +36,9 @@ describe.only("Calculate averages", () => {
       ],
     ])
     const averages = calcAverageScore(responses)
-    expect(averages["one"].sum).toBe(5)
-    expect(averages["one"].count).toBe(2)
-    expect(averages["one"].average).toBe(2.5)
+    expect(averages.get("one").sum).toBe(5)         // Had to change from averages["one"] to averages.get("one"), or it couldn't read the value for some reason...
+    expect(averages.get("one").count).toBe(2)
+    expect(averages.get("one").average).toBe(2.5)
   })
   it("should calculate average by questionId", () => {
     const responses = new Map<string, Response>([

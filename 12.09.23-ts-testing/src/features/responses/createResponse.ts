@@ -44,7 +44,7 @@ const createResponses: CreateResponses = ({
       category: faker.category(),
       answer: faker.answer()
     }
-    responses.set(`response-1${i}`, response)
+    responses.set(`response-${i}`, response)
   }
   return responses
 }
